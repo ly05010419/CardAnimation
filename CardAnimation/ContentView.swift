@@ -12,23 +12,25 @@ struct ContentView: View {
     @State var show = false
     
     var body: some View {
-        Button(action: {
-            withAnimation {
-                self.show.toggle()
+        ZStack(){
+            
+           Button(action: {
+                withAnimation {
+                    self.show.toggle()
+                }
+            }) {
+                Text(show ? "" : "+")
+                .foregroundColor(Color.white)
+                .fontWeight(.bold)
+                .font(.title)
+                .frame(width: show ? UIScreen.main.bounds.size.height*2 : 80, height: show ? UIScreen.main.bounds.size.height*2 : 80)
+                .background(Color.blue)
             }
-        }) {
-            VStack() {
-                Text("Card")
-                    .foregroundColor(Color.white)
-                    .fontWeight(.bold)
-                    .font(.title)
-            }
-            .frame(width: show ? UIScreen.main.bounds.size.width : 100, height: show ? UIScreen.main.bounds.size.height+10 : 100)
-            .background(Color.blue)
+            .cornerRadius(show ? UIScreen.main.bounds.size.height : 40)
+           .animation(.spring())
+            .shadow(radius: 30)
+           .padding(.init(top: show ? 0 : (UIScreen.main.bounds.size.height - 150), leading: show ? 0 : 280, bottom: 0, trailing:0))
         }
-        .cornerRadius(show ? 0 : 50)
-        .animation(.spring())
-        .shadow(radius: 30)
     }
 }
 
