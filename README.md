@@ -1,4 +1,4 @@
-# FancyControl
+# CardAnimation
 
 A new SwiftUI project 
 
